@@ -156,13 +156,14 @@ def char_repeat_control(list_char,letter):
 
 '''====================== FUNÇÂO PARA VERIFICAR SE O USUARIO QUER CONTINUAR JOGANDO ======================'''
 def should_continue():
-     while True:
-          option = input("Outra partida? [S/N]: ").strip().upper()[0]
-          if  option == 'S':
-               return True
-          elif option == 'N':
-               return False
-      
+     option = input("Outra partida? [S/N]: ").strip().upper()[0]
+     while option != 'S' and option != 'N':
+       option = input("Opção inválida, tente novamente.\nOutra partida? [S/N]: ").strip().upper()[0]
+       if  option == 'S':
+            return True
+       elif option == 'N':
+            break
+     return False
 
 '''====================== FUNÇÂO MAIN ======================'''
 
@@ -230,5 +231,5 @@ if __name__==  '__main__':
 if __name__==  '__main__':
     while True:
           main(None)
-          if not should_continue():
-               break
+          if should_continue():
+               continue
