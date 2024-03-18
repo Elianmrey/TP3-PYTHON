@@ -1,0 +1,51 @@
+import re as reg_expresion
+
+
+def name_lastname():
+         user_name_lastname = input("Digite nome e sobrenome: ")
+         array_name = user_name_lastname.split(' ')
+         uppercase_vector = []
+         for  i in range(len(array_name)):
+            uppercase_vector.append(array_name[i].title())        #--------->>> Pega a primeira letra de cada palavra e junta.
+         
+         return uppercase_vector
+
+
+def email_valido(email):
+      regex = r'^[a-zA-Z]+@[a-zA-Z]+\.[a-zA-Z]+$'
+      if reg_expresion.match(regex, email):
+          return True
+      else:
+            return False
+'''
+---------------CONTROLE DE EMAIL------------
+'''
+def controle_email():      
+       
+        email = input('Digite seu email: ')
+
+        if email_valido(email):
+            return email
+        else:
+            while True:
+                print( 'E-mail invalido\n')
+                print( '1 - Tentar novamente\n0 - Cancelar\n')   
+                us_select = input("\nDigite a opção escolhida: ")
+                if us_select ==  '1':
+                    
+                     if controle_email():
+                          return email
+                     else:  
+                           continue
+                elif us_select == '0':
+                     break  
+                else: 
+                     print('Opção inválida! Digite uma das opções disponíveis.')
+
+
+
+
+
+name_lastname()
+
+print(controle_email())
