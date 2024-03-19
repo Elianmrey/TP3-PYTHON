@@ -3,11 +3,11 @@ import re as reg_expresion
 '''
 --------------------FORMATADOR DE VETORES COM NOME E SOBRENOME--------------------
 '''
+
 def name_lastname_data():
          user_name_lastname = input("Digite nome e sobrenome: ")
          array_name = user_name_lastname.split(' ')
-         '''Usuario tem nome e 2 sobrenomes, a validação abaixo verifica se o usuario escreveu 
-           mais de um sobrenome e se certifica que o vetor seja de 2 posições ('Nome' , 'Sobrenome') '''
+         
          if len(array_name)>1 :  
               first_name = array_name[0]
               last_name = ' '.join([i for i in array_name[1:]])
@@ -81,18 +81,8 @@ def user_registration(data_bank):
      return  data_bank
 
 '''
---------------------MOSTRAR USUARIO--------------------
-'''
-
-#def show_user_info(array_user):
-
-
-
-'''
 --------------------BUSCAR USUARIO--------------------
 '''
-
-
 def  search_user(data_bank):
      opcao = input("Desejo fazer a busca por: \n1-Nome\n2-Sobrenome\n\nOpção: ")
      finded_users = []
@@ -111,17 +101,19 @@ def  search_user(data_bank):
                          
      else:
           print('ERRO! Digite uma opção válida.')
+     if not None in finded_users:      
+        for index in finded_users:
           
-     for i in range(len(data_bank)):
-           print('\n--- Dados do Usuário ---')
-           print(f"Nome completo:",data_bank[finded_users[i]][0] + ' ' + data_bank[finded_users[i]][1])
-           print(f'E-mail: {data_bank[finded_users[i]][2]}')
-                 
+                print('\n--- Dados do Usuário ---')
+                print(f"Nome completo:", data_bank[index][0] + ' ' + data_bank[index][1])
+                print(f'E-mail: {data_bank[index][2]}')
+     else:
+                print('O usuário não foi encontrado na base de dados.')
 
 databank = []    
 databank = user_registration(databank) 
 
-print(databank)
+
 search_user(databank)
 
 
